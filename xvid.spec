@@ -12,6 +12,8 @@ Group:		Libraries
 Source0:	http://files.xvid.org/downloads/xvidcore-%{version}-%{beta}.tar.bz2
 # Source0-md5:	b2a94f56844f4c85aebc1e66853f7567
 URL:		http://www.xvid.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
 %ifarch %{ix86}
 BuildRequires:	nasm >= 0.98.34
 %endif
@@ -55,6 +57,9 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %build
 cd build/generic
+cp -f /usr/share/automake/config.sub .
+%{__aclocal}
+%{__autoconf}
 %configure
 %{__make}
 
