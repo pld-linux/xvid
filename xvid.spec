@@ -1,12 +1,8 @@
 
-#
-# todo:
-# 1. descriptions and summaries
-#
+%define snap 20020412
 
-%define snap 20020404
-
-Summary:	XVid
+Summary:	GPLed reimplementation of OpenDivX video codec
+Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.%{snap}
 Release:	0.1
@@ -17,20 +13,25 @@ URL:		http://www.xvid.org
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Xvid
+GPLed reimplementation of OpenDivX video codec. You can play OpenDivX
+and DivX4 videos with it.
 
 %description -l pl
-Xvid
+Reimplementacja kodeka wideo OpenDivX na licencji GPL. Za pomoc± tej
+biblioteki mo¿esz odtwarzaæ pliki zapisane w standardzie OpenDivX i
+DivX4.
 
 %package devel
-Summary:	Xvid devel
-Group:		Libraries/Development
+Summary:	Development files of XviD video codec
+Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
+Group:		Development/Libraries
+%requires_eq xvid
 
 %description devel
-Xvid headers
+Development files of XviD video codec.
 
 %description devel -l pl
-Pliki nag³ówkowe Xvid
+Pliki programistyczne dla kodeka wideo XviD.
 
 %prep
 %setup  -q -n %{name}_%{snap}
@@ -52,7 +53,7 @@ install xvid.h $RPM_BUILD_ROOT%{_includedir}
 
 cd ../..
 
-gzip -9nf xvidcore/{a,c,t}*.txt
+gzip -9nf xvidcore/{a,c,t}*.txt xvidcore/doc/*.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,4 +68,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%doc xvidcore/doc/*.gz
 %{_includedir}/*.h
