@@ -39,7 +39,16 @@ Pliki programistyczne dla kodeka wideo XviD.
 
 %build
 cd xvidcore/build/generic
-%{__make} \
+%{__make} -f \
+%ifarch %{ix86}
+    Makefile.linux \
+%endif
+%ifarch ppc
+    Makefile.linuxppc \
+%endif
+%ifarch sparc sparc64 sparcv9        
+    Makefile.sparc \
+%endif
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall \
 %ifarch %{ix86}	
