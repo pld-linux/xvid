@@ -1,5 +1,5 @@
 
-%define snap 20020412
+%define snap 20020728
 
 Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
@@ -8,7 +8,7 @@ Version:	0.%{snap}
 Release:	4
 License:	GPL
 Group:		Libraries
-Source0:	http://www.xvid.org/%{name}_snapshot_%{snap}.tar.gz
+Source0:	http://www.xvid.org/snapshots/%{name}_snapshot_%{snap}.tar.gz
 URL:		http://www.xvid.org/
 BuildRequires:	nasm
 ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
@@ -81,15 +81,13 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd xvidcore/build/generic
 install *.so $RPM_BUILD_ROOT%{_libdir}
-install libcore.a $RPM_BUILD_ROOT%{_libdir}/libxvidcore.a
+install *.a $RPM_BUILD_ROOT%{_libdir}
 
 cd ../../../xvidcore/src
 
 install xvid.h $RPM_BUILD_ROOT%{_includedir}
 
 cd ../..
-
-gzip -9nf xvidcore/{a,c,t}*.txt xvidcore/doc/*.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,13 +97,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc xvidcore/*.gz vfw/bin/XviD_Options_Explained.pdf
+%doc xvidcore/{a,c,t}*.txt xvidcore/doc/README
 %attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
-%doc xvidcore/doc/*.gz
+%doc xvidcore/doc/*.txt
 %{_includedir}/*.h
 
 %files static
+%defattr(644,root,root,755)
 %{_libdir}/*.a
