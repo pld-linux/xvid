@@ -66,8 +66,9 @@ cd build/generic
 %{__make} install \
 	libdir=$RPM_BUILD_ROOT%{_libdir} \
 	includedir=$RPM_BUILD_ROOT%{_includedir}
-ln -sf libxvidcore.so.*.* $RPM_BUILD_ROOT%{_libdir}/libxvidcore.so
-cd -
+
+cd $RPM_BUILD_ROOT%{_libdir}
+ln -sf libxvidcore.so.*.* libxvidcore.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
