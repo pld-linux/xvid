@@ -5,11 +5,11 @@ Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.%{snap}
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.xvid.org/%{name}_snapshot_%{snap}.tar.gz
-URL:		http://www.xvid.org
+URL:		http://www.xvid.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,7 +25,7 @@ DivX4.
 Summary:	Development files of XviD video codec
 Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
-%requires_eq xvid
+%requires_eq	xvid
 
 %description devel
 Development files of XviD video codec.
