@@ -5,11 +5,12 @@ Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.%{snap}
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	http://www.xvid.org/%{name}_snapshot_%{snap}.tar.gz
 URL:		http://www.xvid.org/
+ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,7 +41,17 @@ Pliki programistyczne dla kodeka wideo XviD.
 cd xvidcore/build/generic
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall -DARCH_X86 -DLINUX -ffast-math -fstrict-aliasing %{!?debug:-funroll-loops -fomit-frame-pointer}"
+	CFLAGS="%{rpmcflags} -Wall \
+%ifarch %{ix86}	
+	-DARCH_X86 \
+%endif
+%ifarch ppc
+	-DARCH_PPC -DARCH_IS_BIG_ENDIAN \
+%endif
+%ifarch sparc sparc64 sparcv9
+	-DARCH_IS_BIG_ENDIAN -DARCH_SPARC \
+%endif			 
+	-DLINUX -ffast-math -fstrict-aliasing %{!?debug:-funroll-loops -fomit-frame-pointer}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
