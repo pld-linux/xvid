@@ -4,6 +4,7 @@ Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.9.0
 Release:	1
+Epoch:		1
 License:	GPL
 Group:		Libraries
 Source0:	http://cvs.xvid.org/downloads/xvidcore-0.9.0/%{name}core-%{version}.tar.bz2
