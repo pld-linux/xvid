@@ -1,26 +1,26 @@
 
-Summary:	GPLed reimplementation of OpenDivX video codec
-Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
+Summary:	ISO MPEG-4 compliant video codec
+Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
-Version:	0.9.0
+Version:	0.9.1
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Libraries
-Source0:	http://cvs.xvid.org/downloads/xvidcore-0.9.0/%{name}core-%{version}.tar.bz2
+Source0:	http://files.xvid.org/downloads/xvidcore-%{version}.tar.bz2
 URL:		http://www.xvid.org/
 BuildRequires:	nasm
 ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-GPLed reimplementation of OpenDivX video codec. You can play OpenDivX
-and DivX4 videos with it.
+ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4 videos
+with it, too.
 
 %description -l pl
-Reimplementacja kodeka wideo OpenDivX na licencji GPL. Za pomoc± tej
-biblioteki mo¿esz odtwarzaæ pliki zapisane w standardzie OpenDivX i
-DivX4.
+Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4. Za pomoc± tej
+biblioteki mo¿esz tak¿e odtwarzaæ pliki zapisane w standardzie OpenDivX
+i DivX4.
 
 %package devel
 Summary:	Development files of XviD video codec
@@ -51,44 +51,17 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %build
 cd build/generic
-%{__make} -f \
-%ifarch %{ix86}
-    Makefile.linuxx86 \
-%endif
-%ifarch ppc
-    Makefile.linuxppc \
-%endif
-%ifarch sparc sparc64 sparcv9
-    Makefile.sparc \
-%endif
-	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall \
-%ifarch %{ix86}
-	-DARCH_X86 \
-%endif
-%ifarch ppc
-	-DARCH_PPC -DARCH_IS_BIG_ENDIAN \
-%endif
-%ifarch sparc sparc64 sparcv9
-	-DARCH_IS_BIG_ENDIAN -DARCH_SPARC \
-%endif
-	-DLINUX -ffast-math -fstrict-aliasing %{!?debug:-funroll-loops -fomit-frame-pointer}"
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}/xvid}
+
+install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd build/generic
-install *.so $RPM_BUILD_ROOT%{_libdir}
-install *.a $RPM_BUILD_ROOT%{_libdir}
-
-cd ../../src
-
-install xvid.h divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid
-ln -s divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid/decore.h
-ln -s divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid/encore2.h
-
-cd ../..
+%{__make} install libdir=$RPM_BUILD_ROOT%{_libdir} \
+	includedir=$RPM_BUILD_ROOT%{_includedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -104,8 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/*.txt
-%dir %{_includedir}/xvid
-%{_includedir}/xvid/*.h
+%{_includedir}/xvid.h
 
 %files static
 %defattr(644,root,root,755)
