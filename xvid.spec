@@ -1,14 +1,12 @@
 
-%define snap 20020728
-
 Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
-Version:	0.%{snap}
-Release:	5
+Version:	0.9.0
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.xvid.org/snapshots/%{name}_snapshot_%{snap}.tar.gz
+Source0:	http://cvs.xvid.org/downloads/xvidcore-0.9.0/%{name}core-%{version}.tar.bz2
 URL:		http://www.xvid.org/
 BuildRequires:	nasm
 ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
@@ -48,23 +46,23 @@ Static XviD video codec library.
 Statyczna biblioteka kodeka wideo XviD.
 
 %prep
-%setup  -q -n %{name}_%{snap}
+%setup  -q -n xvidcore-%{version}
 
 %build
-cd xvidcore/build/generic
+cd build/generic
 %{__make} -f \
 %ifarch %{ix86}
-    Makefile.linux \
+    Makefile.linuxx86 \
 %endif
 %ifarch ppc
     Makefile.linuxppc \
 %endif
-%ifarch sparc sparc64 sparcv9        
+%ifarch sparc sparc64 sparcv9
     Makefile.sparc \
 %endif
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall \
-%ifarch %{ix86}	
+%ifarch %{ix86}
 	-DARCH_X86 \
 %endif
 %ifarch ppc
@@ -72,18 +70,18 @@ cd xvidcore/build/generic
 %endif
 %ifarch sparc sparc64 sparcv9
 	-DARCH_IS_BIG_ENDIAN -DARCH_SPARC \
-%endif			 
+%endif
 	-DLINUX -ffast-math -fstrict-aliasing %{!?debug:-funroll-loops -fomit-frame-pointer}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}/xvid}
 
-cd xvidcore/build/generic
+cd build/generic
 install *.so $RPM_BUILD_ROOT%{_libdir}
 install *.a $RPM_BUILD_ROOT%{_libdir}
 
-cd ../../../xvidcore/src
+cd ../../src
 
 install xvid.h divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid
 ln -s divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid/decore.h
@@ -99,12 +97,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc xvidcore/{a,c,t}*.txt xvidcore/doc/README
+%doc {a,c,t}*.txt doc/README
 %attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
-%doc xvidcore/doc/*.txt
+%doc doc/*.txt
 %dir %{_includedir}/xvid
 %{_includedir}/xvid/*.h
 
