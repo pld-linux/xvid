@@ -7,6 +7,7 @@ Epoch:		1
 License:	GPL
 Group:		Libraries
 Source0:	http://files.xvid.org/downloads/xvidcore-%{version}.tar.bz2
+# Source0-md5: 57f958ae81562b3f5dbb7ac0e0ff3489
 URL:		http://www.xvid.org/
 BuildRequires:	nasm
 ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
