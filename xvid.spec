@@ -3,7 +3,7 @@ Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.0.0
 %define beta	rc3
-Release:	0.%{beta}.2
+Release:	0.%{beta}.3
 Epoch:		1
 License:	GPL
 Group:		Libraries
