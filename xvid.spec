@@ -10,6 +10,7 @@ License:	GPL
 Group:		Libraries
 Source0:	http://www.xvid.org/%{name}_snapshot_%{snap}.tar.gz
 URL:		http://www.xvid.org/
+BuildRequires:	nasm
 ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
