@@ -4,11 +4,11 @@
 # 1. descriptions and summaries
 #
 
-%define snap 17_03_2002
+%define snap 20020404
 
 Summary:	XVid
 Name:		xvid
-Version:	0.17_03_2002
+Version:	0.%{snap}
 Release:	0.1
 License:	GPL
 Group:		Libraries
@@ -33,7 +33,7 @@ aa
 aa
 
 %prep
-%setup  -q -n %{name}-17_03_02
+%setup  -q -n %{name}_%{snap}
 
 %build
 cd xvidcore/build/generic
