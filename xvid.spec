@@ -5,7 +5,7 @@ Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.%{snap}
-Release:	4
+Release:	5
 License:	GPL
 Group:		Libraries
 Source0:	http://www.xvid.org/snapshots/%{name}_snapshot_%{snap}.tar.gz
@@ -77,7 +77,7 @@ cd xvidcore/build/generic
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
+install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}/xvid}
 
 cd xvidcore/build/generic
 install *.so $RPM_BUILD_ROOT%{_libdir}
@@ -85,7 +85,9 @@ install *.a $RPM_BUILD_ROOT%{_libdir}
 
 cd ../../../xvidcore/src
 
-install xvid.h $RPM_BUILD_ROOT%{_includedir}
+install xvid.h divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid
+ln -s divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid/decore.h
+ln -s divx4.h $RPM_BUILD_ROOT%{_includedir}/xvid/encore2.h
 
 cd ../..
 
@@ -103,7 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc xvidcore/doc/*.txt
-%{_includedir}/*.h
+%dir %{_includedir}/xvid
+%{_includedir}/xvid/*.h
 
 %files static
 %defattr(644,root,root,755)
