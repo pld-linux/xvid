@@ -1,16 +1,14 @@
-
-%define beta beta3
-
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.0.0
+%define beta	rc1
 Release:	0.%{beta}.1
 Epoch:		1
 License:	GPL
 Group:		Libraries
 Source0:	http://files.xvid.org/downloads/xvidcore-%{version}-%{beta}.tar.bz2
-# Source0-md5:	63bb19fca7d9075ca823de42847002ec
+# Source0-md5:	aa50ce6ca2c0f767dca5e1a0995b884b
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -53,7 +51,7 @@ Static XviD video codec library.
 Statyczna biblioteka kodeka wideo XviD.
 
 %prep
-%setup  -q -n xvidcore-%{version}-%{beta}
+%setup -q -n xvidcore-%{version}-%{beta}
 
 %build
 cd build/generic
@@ -67,8 +65,7 @@ cp -f /usr/share/automake/config.sub .
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
-cd build/generic
-%{__make} install \
+%{__make} -C build/generic install \
 	libdir=$RPM_BUILD_ROOT%{_libdir} \
 	includedir=$RPM_BUILD_ROOT%{_includedir}
 
