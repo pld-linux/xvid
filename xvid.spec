@@ -5,7 +5,7 @@ Summary:	GPLed reimplementation of OpenDivX video codec
 Summary(pl):	Reimplementacja kodeka wideo OpenDivX na licencji GPL
 Name:		xvid
 Version:	0.%{snap}
-Release:	3
+Release:	4
 License:	GPL
 Group:		Libraries
 Source0:	http://www.xvid.org/%{name}_snapshot_%{snap}.tar.gz
@@ -33,6 +33,18 @@ Development files of XviD video codec.
 
 %description devel -l pl
 Pliki programistyczne dla kodeka wideo XviD.
+
+%package static
+Summary:	Static XviD video codec library
+Summary(pl):	Statyczna biblioteka kodeka wideo XviD
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static XviD video codec library.
+
+%description static -l pl
+Statyczna biblioteka kodeka wideo XviD.
 
 %prep
 %setup  -q -n %{name}_%{snap}
@@ -68,6 +80,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd xvidcore/build/generic
 install *.so $RPM_BUILD_ROOT%{_libdir}
+install libcore.a $RPM_BUILD_ROOT%{_libdir}/libxvidcore.a
 
 cd ../../../xvidcore/src
 
@@ -92,3 +105,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc xvidcore/doc/*.gz
 %{_includedir}/*.h
+
+%files static
+%{_libdir}/*.a
