@@ -26,7 +26,7 @@ i DivX4.
 Summary:	Development files of XviD video codec
 Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description devel
 Development files of XviD video codec.
@@ -38,7 +38,7 @@ Pliki programistyczne dla kodeka wideo XviD.
 Summary:	Static XviD video codec library
 Summary(pl):	Statyczna biblioteka kodeka wideo XviD
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Static XviD video codec library.
