@@ -1,5 +1,5 @@
 
-%define beta beta2
+%define beta beta3
 
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
@@ -10,7 +10,7 @@ Epoch:		1
 License:	GPL
 Group:		Libraries
 Source0:	http://files.xvid.org/downloads/xvidcore-%{version}-%{beta}.tar.bz2
-# Source0-md5:	b2a94f56844f4c85aebc1e66853f7567
+# Source0-md5:	63bb19fca7d9075ca823de42847002ec
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
