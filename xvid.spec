@@ -9,8 +9,9 @@ Group:		Libraries
 Source0:	http://files.xvid.org/downloads/xvidcore-%{version}.tar.bz2
 # Source0-md5:	965b2b9ae12ad8f17cee29899c920deb
 URL:		http://www.xvid.org/
-BuildRequires:	nasm
-ExclusiveArch:	%{ix86} ppc sparc sparc64 sparcv9
+%ifarch %{ix86}
+BuildRequires:	nasm >= 0.98.34
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
