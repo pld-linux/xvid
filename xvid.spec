@@ -27,10 +27,10 @@ Summary:	Xvid devel
 Group:		Libraries/Development
 
 %description devel
-aa
+Xvid headers
 
 %description devel -l pl
-aa
+Pliki nag³ówkowe Xvid
 
 %prep
 %setup  -q -n %{name}_%{snap}
