@@ -2,13 +2,12 @@ Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.0.0
-%define beta	rc4
-Release:	0.%{beta}.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Libraries
-Source0:	http://files.xvid.org/downloads/xvidcore-%{version}-%{beta}.tar.bz2
-# Source0-md5:	112910affa656dca7cf16d9e0a6e1b78
+Source0:	http://files.xvid.org/downloads/xvidcore-%{version}.tar.bz2
+# Source0-md5:	9438d002737d1a72db58f5dcf4dba830
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -51,7 +50,7 @@ Static XviD video codec library.
 Statyczna biblioteka kodeka wideo XviD.
 
 %prep
-%setup -q -n xvidcore-%{version}-%{beta}
+%setup -q -n %{name}core-%{version}
 
 %build
 cd build/generic
