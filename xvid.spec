@@ -1,13 +1,16 @@
+
+%define beta beta2
+
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
-Version:	0.9.2
-Release:	1
+Version:	1.0.0
+Release:	0.%{beta}.1
 Epoch:		1
 License:	GPL
 Group:		Libraries
-Source0:	http://files.xvid.org/downloads/xvidcore-%{version}.tar.bz2
-# Source0-md5:	965b2b9ae12ad8f17cee29899c920deb
+Source0:	http://files.xvid.org/downloads/xvidcore-%{version}-%{beta}.tar.bz2
+# Source0-md5:	b2a94f56844f4c85aebc1e66853f7567
 URL:		http://www.xvid.org/
 %ifarch %{ix86}
 BuildRequires:	nasm >= 0.98.34
@@ -48,7 +51,7 @@ Static XviD video codec library.
 Statyczna biblioteka kodeka wideo XviD.
 
 %prep
-%setup  -q -n xvidcore-%{version}
+%setup  -q -n xvidcore-%{version}-%{beta}
 
 %build
 cd build/generic
@@ -64,10 +67,7 @@ cd build/generic
 	libdir=$RPM_BUILD_ROOT%{_libdir} \
 	includedir=$RPM_BUILD_ROOT%{_includedir}
 ln -sf libxvidcore.so.*.* $RPM_BUILD_ROOT%{_libdir}/libxvidcore.so
-cd ../..
-
-# additional headers
-install src/divx4.h $RPM_BUILD_ROOT%{_includedir}
+cd -
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,12 +77,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {a,c,t}*.txt doc/README
+%doc doc/README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/*.txt
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*.h
 
