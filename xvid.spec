@@ -1,9 +1,8 @@
-
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	0.9.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Libraries
@@ -60,8 +59,13 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd build/generic
-%{__make} install libdir=$RPM_BUILD_ROOT%{_libdir} \
+%{__make} install \
+	libdir=$RPM_BUILD_ROOT%{_libdir} \
 	includedir=$RPM_BUILD_ROOT%{_includedir}
+cd ../..
+
+# additional headers
+install src/divx4.h $RPM_BUILD_ROOT%{_includedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/*.txt
-%{_includedir}/xvid.h
+%{_includedir}/*.h
 
 %files static
 %defattr(644,root,root,755)
