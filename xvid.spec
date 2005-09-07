@@ -1,10 +1,12 @@
+# TODO
+# - rename to xvidcore like the rest of the world names it
 %define		_beta	beta2
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.1.0
 Release:	0.%{_beta}.1
-Epoch:		1
+Epoch:		2
 License:	GPL
 Group:		Libraries
 #Source0Download: http://www.xvid.org/
@@ -16,6 +18,7 @@ BuildRequires:	automake
 %ifarch %{ix86}
 BuildRequires:	nasm >= 0.98.34
 %endif
+provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,6 +35,7 @@ Summary:	Development files of XviD video codec
 Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
 
 %description devel
 Development files of XviD video codec.
@@ -44,6 +48,7 @@ Summary:	Static XviD video codec library
 Summary(pl):	Statyczna biblioteka kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+provides:	xvidcore-static = %{epoch}:%{version}-%{release}
 
 %description static
 Static XviD video codec library.
