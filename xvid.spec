@@ -48,7 +48,7 @@ Summary:	Static XviD video codec library
 Summary(pl):	Statyczna biblioteka kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-provides:	xvidcore-static = %{epoch}:%{version}-%{release}
+Provides:	xvidcore-static = %{epoch}:%{version}-%{release}
 
 %description static
 Static XviD video codec library.
