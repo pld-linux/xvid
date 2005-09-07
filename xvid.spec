@@ -18,7 +18,7 @@ BuildRequires:	automake
 %ifarch %{ix86}
 BuildRequires:	nasm >= 0.98.34
 %endif
-provides:	xvidcore = %{epoch}:%{version}-%{release}
+Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,7 +35,7 @@ Summary:	Development files of XviD video codec
 Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
+Provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
 
 %description devel
 Development files of XviD video codec.
