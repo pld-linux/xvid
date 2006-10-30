@@ -1,19 +1,18 @@
 # TODO
 # - rename to xvidcore like the rest of the world names it
-%define		_beta	beta2
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
-Version:	1.1.0
+Version:	1.1.1
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Libraries
-#Source0Download: http://www.xvid.org/
 Source0:	http://downloads.xvid.org/downloads/xvidcore-%{version}.tar.bz2
-# Source0-md5:	359eebc5fb496a2bf7b15010059e7897
+# Source0-md5:	76046c3aebce6ae13c93b837763f1e35
+Patch0:		%{name}-fix.patch
 URL:		http://www.xvid.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 %ifarch %{ix86}
 BuildRequires:	nasm >= 0.98.34
@@ -58,6 +57,7 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %prep
 %setup -q -n %{name}core-%{version}
+%patch0 -p1
 
 %build
 cd build/generic
@@ -87,13 +87,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libxvidcore.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/*.h
+%attr(755,root,root) %{_libdir}/libxvidcore.so
+%{_includedir}/xvid.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libxvidcore.a
