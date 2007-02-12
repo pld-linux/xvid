@@ -1,7 +1,7 @@
 # TODO
 # - rename to xvidcore like the rest of the world names it
 Summary:	ISO MPEG-4 compliant video codec
-Summary(pl.UTF-8):   Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
+Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.1.2
 Release:	1
@@ -30,7 +30,7 @@ standardzie OpenDivX i DivX4.
 
 %package devel
 Summary:	Development files of XviD video codec
-Summary(pl.UTF-8):   Pliki programistyczne dla kodeka wideo XviD
+Summary(pl.UTF-8):	Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
@@ -43,7 +43,7 @@ Pliki programistyczne dla kodeka wideo XviD.
 
 %package static
 Summary:	Static XviD video codec library
-Summary(pl.UTF-8):   Statyczna biblioteka kodeka wideo XviD
+Summary(pl.UTF-8):	Statyczna biblioteka kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Provides:	xvidcore-static = %{epoch}:%{version}-%{release}
