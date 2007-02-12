@@ -1,7 +1,7 @@
 # TODO
 # - rename to xvidcore like the rest of the world names it
 Summary:	ISO MPEG-4 compliant video codec
-Summary(pl):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
+Summary(pl.UTF-8):   Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.1.2
 Release:	1
@@ -23,14 +23,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4 videos
 with it, too.
 
-%description -l pl
+%description -l pl.UTF-8
 Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4. Za
-pomoc± tej biblioteki mo¿na tak¿e odtwarzaæ pliki zapisane w
+pomocÄ… tej biblioteki moÅ¼na takÅ¼e odtwarzaÄ‡ pliki zapisane w
 standardzie OpenDivX i DivX4.
 
 %package devel
 Summary:	Development files of XviD video codec
-Summary(pl):	Pliki programistyczne dla kodeka wideo XviD
+Summary(pl.UTF-8):   Pliki programistyczne dla kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
@@ -38,12 +38,12 @@ Provides:	xvidcore-devel = %{epoch}:%{version}-%{release}
 %description devel
 Development files of XviD video codec.
 
-%description devel -l pl
+%description devel -l pl.UTF-8
 Pliki programistyczne dla kodeka wideo XviD.
 
 %package static
 Summary:	Static XviD video codec library
-Summary(pl):	Statyczna biblioteka kodeka wideo XviD
+Summary(pl.UTF-8):   Statyczna biblioteka kodeka wideo XviD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Provides:	xvidcore-static = %{epoch}:%{version}-%{release}
@@ -51,7 +51,7 @@ Provides:	xvidcore-static = %{epoch}:%{version}-%{release}
 %description static
 Static XviD video codec library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka kodeka wideo XviD.
 
 %prep
