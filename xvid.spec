@@ -4,7 +4,7 @@ Summary:	ISO MPEG-4 compliant video codec
 Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.1.3
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Libraries
@@ -20,6 +20,8 @@ BuildRequires:	nasm >= 0.98.34
 %endif
 Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		specflags	-Wl,-z,-noexecstack
 
 %description
 ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4 videos
