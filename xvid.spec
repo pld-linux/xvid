@@ -4,7 +4,7 @@ Summary:	ISO MPEG-4 compliant video codec
 Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.1.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Libraries
@@ -80,6 +80,8 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf libxvidcore.so.*.* libxvidcore.so
+
+chmod +x $RPM_BUILD_ROOT%{_libdir}/lib*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
