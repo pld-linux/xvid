@@ -16,7 +16,7 @@ URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 %ifarch %{ix86}
-BuildRequires:	nasm >= 0.98.34
+BuildRequires:	yasm
 %endif
 Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
