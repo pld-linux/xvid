@@ -1,0 +1,31 @@
+--- xvidcore/build/generic/configure.in.org	2009-05-28 19:03:45.000000000 +0200
++++ xvidcore/build/generic/configure.in	2009-08-01 18:39:22.974453445 +0200
+@@ -585,18 +585,18 @@
+ dnl ==========================================================================
+ 
+ AC_CHECK_HEADER(
+-	pthread.h,
++	[pthread.h],[
+ 	AC_CHECK_LIB(
+-		pthread,
+-		pthread_create,
++		[pthread],
++		[pthread_create],[
+ 		AC_CHECK_LIB(
+-			pthread,
+-			pthread_join,
+-			SPECIFIC_CFLAGS="$SPECIFIC_CFLAGS -DHAVE_PTHREAD"
+-			SPECIFIC_LDFLAGS="$SPECIFIC_LDFLAGS -lpthread",
+-			AC_MSG_WARN(Pthread not supported. No SMP support)),
+-		AC_MSG_WARN(Pthread not supported. No SMP support)),
+-	AC_MSG_WARN(Pthread not supported. No SMP support))
++			[pthread],
++			[pthread_join],
++			[SPECIFIC_CFLAGS="$SPECIFIC_CFLAGS -DHAVE_PTHREAD"
++			SPECIFIC_LDFLAGS="$SPECIFIC_LDFLAGS -lpthread"],
++			[AC_MSG_WARN(Pthread not supported. No SMP support)])],
++		[AC_MSG_WARN(Pthread not supported. No SMP support)])],
++	[AC_MSG_WARN(Pthread not supported. No SMP support)])
+ 
+ dnl ==========================================================================
+ dnl 
