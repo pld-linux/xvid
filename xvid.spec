@@ -4,7 +4,7 @@ Summary:	ISO MPEG-4 compliant video codec
 Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.2.2
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL
 Group:		Libraries
@@ -16,8 +16,8 @@ Patch1:		%{name}-ac.patch
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-%ifarch %{ix86}
-BuildRequires:	yasm
+%ifarch %{ix86} %{x8664}
+BuildRequires:	nasm >= 2.07
 %endif
 Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,10 +72,7 @@ sed -i -e 's#@cd#cd#g' Makefile
 cp -f /usr/share/automake/config.sub .
 %{__aclocal}
 %{__autoconf}
-%configure \
-%ifnarch %{x86}
-	--disable-assembly
-%endif
+%configure
 
 %{__make}
 
