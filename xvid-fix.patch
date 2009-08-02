@@ -1,0 +1,11 @@
+--- xvidcore-1.1.1/src/xvid.c.orig	2006-07-11 21:14:47.000000000 +0200
++++ xvidcore-1.1.1/src/xvid.c	2006-10-30 18:45:12.578968000 +0100
+@@ -712,7 +712,7 @@
+ 		return XVID_ERR_VERSION;
+ 
+ 	info->actual_version = XVID_VERSION;
+-	info->build = "xvid-1.1.1;
++	info->build = "xvid-1.1.1";
+ 	info->cpu_flags = detect_cpu_flags();
+ 
+ #if defined(_SMP) && defined(WIN32)
