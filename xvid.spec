@@ -12,8 +12,7 @@ Group:		Libraries
 Source0:	http://downloads.xvid.org/downloads/xvidcore-%{version}.tar.bz2
 # Source0-md5:	6a3473a12c8a1fa7bdc2b5cb829fab58
 # http://bugs.gentoo.org/attachment.cgi?id=108302
-Patch0:		xvid-1.1.2-textrel.patch
-Patch1:		%{name}-ac.patch
+Patch0:		%{name}-ac.patch
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -62,8 +61,7 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %prep
 %setup -q -n %{name}core
-#%patch0 -p1 
-%patch1 -p1
+%patch0 -p1 
 
 %build
 cd build/generic
