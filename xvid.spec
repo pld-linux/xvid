@@ -11,7 +11,6 @@ Group:		Libraries
 #Source0Download: http://www.xvid.org/Downloads.43.0.html
 Source0:	http://downloads.xvid.org/downloads/xvidcore-%{version}.tar.bz2
 # Source0-md5:	6a3473a12c8a1fa7bdc2b5cb829fab58
-# http://bugs.gentoo.org/attachment.cgi?id=108302
 Patch0:		%{name}-ac.patch
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
