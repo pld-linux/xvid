@@ -11,7 +11,6 @@ Group:		Libraries
 #Source0Download: http://www.xvid.org/Downloads.43.0.html
 Source0:	http://downloads.xvid.org/downloads/xvidcore-%{version}.tar.bz2
 # Source0-md5:	5b1c7032809bef6fa11eb3f4fbcf78e4
-Patch0:		%{name}-ac.patch
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -60,7 +59,6 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %prep
 %setup -q -n %{name}core
-#%patch0 -p1 
 
 %build
 cd build/generic
