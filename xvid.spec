@@ -20,7 +20,7 @@ BuildRequires:	nasm >= 2.07
 Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		specflags	-Wl,-z,-noexecstack
+%define		specflags	-Wl,-z,noexecstack
 
 %description
 ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4 videos
