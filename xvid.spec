@@ -4,12 +4,12 @@ Summary:	ISO MPEG-4 compliant video codec
 Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
 Version:	1.3.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Libraries
-#Source0Download: http://www.xvid.org/Downloads.43.0.html
-Source0:	http://downloads.xvid.org/downloads/xvidcore-%{version}.tar.bz2
+# Source0Download: http://www.xvid.org/Downloads.43.0.html
+Source0:	http://downloads.xvid.org/downloads/%{name}core-%{version}.tar.bz2
 # Source0-md5:	34389e980d4f849688f8b1e168f4e2f9
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
@@ -23,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		specflags	-Wl,-z,noexecstack
 
 %description
-ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4 videos
-with it, too.
+ISO MPEG-4 compliant video codec. You can play OpenDivX and DivX4
+videos with it, too.
 
 %description -l pl.UTF-8
 Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4. Za
@@ -82,6 +82,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir}}
 
 cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf libxvidcore.so.*.* libxvidcore.so
+/sbin/ldconfig -n .
 
 chmod +x $RPM_BUILD_ROOT%{_libdir}/lib*
 
@@ -95,6 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/README
 %attr(755,root,root) %{_libdir}/libxvidcore.so.*.*
+%ghost %{_libdir}/libxvidcore.so.4
 
 %files devel
 %defattr(644,root,root,755)
