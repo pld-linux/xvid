@@ -1,0 +1,28 @@
+--- xvidcore/build/generic/configure.in~	2011-05-18 07:59:28.000000000 +0000
++++ xvidcore/build/generic/configure.in	2015-03-05 18:01:10.805221468 +0000
+@@ -179,6 +179,11 @@
+ 	  	ARCHITECTURE="IA32"
+                 ;;
+           x86_64)
++	  case "$target_os" in
++		  *gnux32)
++                SUB_ARCHITECTURE="X32"
++		;;
++	  esac
+                 AC_MSG_RESULT(x86_64)
+                 ARCHITECTURE="X86_64"
+ 		;;	
+@@ -423,8 +431,13 @@
+        case "$target_os" in
+            *bsd*|linux*|beos|irix*|solaris*)
+                if test "$ARCHITECTURE" = "X86_64" ; then
++                 if test "$SUB_ARCHITECTURE" = "X32" ; then
++                   AC_MSG_RESULT([elfx32])
++                   NASM_FORMAT="elfx32"
++                 else
+                    AC_MSG_RESULT([elf64])
+                    NASM_FORMAT="elf64"
++                 fi
+                else
+                    AC_MSG_RESULT([elf])
+                    NASM_FORMAT="elf"
