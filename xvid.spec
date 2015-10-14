@@ -3,20 +3,21 @@
 Summary:	ISO MPEG-4 compliant video codec
 Summary(pl.UTF-8):	Implementacja kodeka wideo zgodnego ze standardem ISO MPEG-4
 Name:		xvid
-Version:	1.3.2
-Release:	3
+Version:	1.3.4
+Release:	1
 Epoch:		1
-License:	GPL
+License:	GPL v2+
 Group:		Libraries
-# Source0Download: http://www.xvid.org/Downloads.43.0.html
+# Source0Download: https://labs.xvid.com/source/
 Source0:	http://downloads.xvid.org/downloads/%{name}core-%{version}.tar.bz2
-# Source0-md5:	34389e980d4f849688f8b1e168f4e2f9
+# Source0-md5:	5e68b84e3286b7bbaa95ddc34f0fcace
 Patch0:		x32.patch
 URL:		http://www.xvid.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 %ifarch %{ix86} %{x8664} x32
-BuildRequires:	nasm >= 2.07
+# or nasm >= 2.0
+BuildRequires:	yasm >= 1
 %endif
 Provides:	xvidcore = %{epoch}:%{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -98,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/README
 %attr(755,root,root) %{_libdir}/libxvidcore.so.*.*
-%ghost %{_libdir}/libxvidcore.so.4
+%attr(755,root,root) %ghost %{_libdir}/libxvidcore.so.4
 
 %files devel
 %defattr(644,root,root,755)
