@@ -61,7 +61,7 @@ Statyczna biblioteka kodeka wideo XviD.
 
 %prep
 %setup -q -n %{name}core
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cd build/generic
