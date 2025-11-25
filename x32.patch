@@ -14,7 +14,7 @@
  		;;	
 @@ -423,8 +431,13 @@
         case "$target_os" in
-            *bsd*|linux*|beos|irix*|solaris*)
+            *bsd*|linux*|beos|irix*|solaris*|gnu*|*qnx*)
                 if test "$ARCHITECTURE" = "X86_64" ; then
 +                 if test "$SUB_ARCHITECTURE" = "X32" ; then
 +                   AC_MSG_RESULT([elfx32])
