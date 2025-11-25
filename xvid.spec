@@ -69,6 +69,7 @@ sed -i -e 's#@$(AS)#$(AS)#g' Makefile
 sed -i -e 's#@$(CC)#$(CC)#g' Makefile
 sed -i -e 's#@cd#cd#g' Makefile
 cp -f /usr/share/automake/config.sub .
+export CFLAGS="%{rpmcflags} -std=gnu11"
 %{__aclocal}
 %{__autoconf}
 %configure
